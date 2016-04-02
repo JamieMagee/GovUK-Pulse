@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using Microsoft.WindowsAzure.Storage;
 using Newtonsoft.Json;
 
