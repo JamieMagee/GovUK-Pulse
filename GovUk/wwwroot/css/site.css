@@ -1,0 +1,148 @@
+﻿body {
+    padding-bottom: 20px;
+    padding-top: 50px;
+}
+
+/* Wrapping element */
+
+/* Set some basic padding to keep content from hitting the edges */
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.total-value {
+    font-size: 3em;
+}
+
+header {
+    background: #005ea5;
+    color: #fff;
+    overflow: auto;
+    padding: 40px;
+}
+
+    .footer .container p a,
+    header p a,
+    header h2 a {
+        color: white;
+        font-weight: bold;
+    }
+
+        .footer .container p a:hover,
+        header p a:hover,
+        header h2 a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+.body-content {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+@media (max-width: 767px) {
+    .https_chart {
+        display: none;
+    }
+
+    span.glyphicon-thumbs-down {
+        font-size: 1em;
+    }
+}
+
+.https_chart {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-inverse {
+    background-color: #000;
+    border: none;
+}
+
+p a, .list-unstyled li a {
+    font-weight: bold;
+}
+
+a:hover {
+    color: #337ab7;
+}
+
+#faq-answers li, .container > ul {
+    padding-bottom: 40px;
+}
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.footer {
+    background-color: #005ea5;
+    bottom: 0;
+    color: #FFF;
+    font-size: .875em;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+    .footer .container {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 68em;
+    }
+
+        .footer .container p {
+            margin: 0;
+        }
+
+        .footer .container:first-child {
+            margin-top: 15px;
+        }
+
+/*.footer .container p {
+    margin: 20px 0;
+}*/
+
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+
+    .navbar-inverse .navbar-brand:hover {
+        text-decoration: underline;
+    }
+
+    .navbar-inverse .navbar-nav > li > a:hover {
+        background-color: white;
+        color: black;
+    }
+
+table {
+    width: 100% !important;
+}
+
+footer .container p:last-child {
+    margin-bottom: 15px;
+}
+
+span.glyphicon-thumbs-down {
+    font-size: 10em;
+}

@@ -1,0 +1,10 @@
+{
+  "name": "ASP.NET",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "3.3.6",
+    "d3": "3.5.16",
+    "datatables-responsive": "2.0.2",
+    "jquery": "2.2.2"
+  }
+}
