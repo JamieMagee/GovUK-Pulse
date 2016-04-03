@@ -13,7 +13,7 @@ namespace GovUk
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
-                .AddJsonFile("connectionstring.json")
+                .AddJsonFile("connectionstring.json", true)
                 .AddEnvironmentVariables();
 
             if (env.IsDevelopment())
