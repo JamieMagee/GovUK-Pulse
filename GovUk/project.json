@@ -28,13 +28,14 @@
   },
 
   "frameworks": {
-    "dnx451": {
+    "dnx452": {
       "dependencies": {
         "Microsoft.WindowsAzure.ConfigurationManager": "3.2.1"
       },
       "frameworkAssemblies": {
         "System.configuration": "4.0.0.0"
-      }
+      },
+      "dnxcore50": { }
     }
   },
 
