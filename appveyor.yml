@@ -1,0 +1,52 @@
+version: 1.0.{build}
+configuration: Release
+platform: Any CPU
+environment:
+  webdeploy_pass:
+    secure: 8KN7P+3yRejVtcLp4XsOrngOVgKHeYL8z/V/iIk0mPirfADzLO5882blRWEwvHvIVK0aQLi7ew15cb+XFGFrdA==
+install:
+  - dnvm update-self
+  - dnvm install 1.0.0-rc1-final
+  - dnvm list
+  - dnvm use 1.0.0-rc1-final
+cache: C:\Users\appveyor\.dnx\packages
+before_build:
+  - nuget restore
+  - dnu restore
+build:
+  parallel: true
+  verbosity: quiet
+after_build:
+  - npm install -g bower
+  - npm install -g gulp
+  - dnu publish GovUk -o AppOutput\GovUk --configuration Release --runtime dnx-clr-win-x86.1.0.0-rc1-final --wwwroot-out "wwwroot" --quiet
+test: off
+artifacts:
+- path: AppOutput\GovUK
+  name: GovUk
+  type: WebDeployPackage
+- path: SslScanner\bin\Release
+  name: SslScanner
+deploy:
+- provider: WebDeploy
+  server: https://govuk.scm.azurewebsites.net:443/msdeploy.axd?site=govuk
+  website: govuk
+  username: $govuk
+  password: %webdeploy_pass%
+  artifact: AppOutput\GovUk.zip
+  aspnet_core: true
+  ntlm: false
+  remove_files: false
+  app_offline: false
+  aspnet_core_force_restart: true
+  on:
+    branch: master
+- provider: AzureWebJob
+  website: govuk
+  username: $govuk
+  password: %webdeploy_pass%
+  artifact: SslScanner\bin\SslScanner.zip
+  job_name: SslScanner
+  job_schedule: 0 0 0 * * *
+  on:
+    branch: master
