@@ -19,8 +19,7 @@
     "Microsoft.Extensions.Logging": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
-    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc1-final",
-    "WindowsAzure.Storage": "6.2.2-preview"
+    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc1-final"
   },
 
   "commands": {
@@ -30,7 +29,6 @@
   "frameworks": {
     "dnx452": {
       "dependencies": {
-        "Microsoft.WindowsAzure.ConfigurationManager": "3.2.1"
       },
       "frameworkAssemblies": {
         "System.configuration": "4.0.0.0"

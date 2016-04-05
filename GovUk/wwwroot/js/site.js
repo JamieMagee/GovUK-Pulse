@@ -38,6 +38,13 @@
         }
     };
 
+    var monthNames = [
+        "January", "February", "March",
+        "April", "May", "June", "July",
+        "August", "September", "October",
+        "November", "December"
+    ];
+
     var display = function(set) {
         return function(data, type) {
             if (type === "sort")
@@ -71,12 +78,19 @@
         }
         return data;
     };
-
+    //https://govuk.blob.core.windows.net/scans/latest.json
 
     $("table").DataTable({
-        ajax: {
-            url: "https://govuk.blob.core.windows.net/scans/latest.json",
-            dataSrc: ""
+        ajax: function(data, callback, settings) {
+            settings.sAjaxDataProp = "";
+            $.getJSON(
+                "https://govuk.blob.core.windows.net/scans/latest.json"
+            ).done(function(data, textStatus, request) {
+                $(".last-modified").text(parseDate(request.getResponseHeader("Last-Modified")));
+                callback(
+                    data
+                );
+            });
         },
         columns: [
             {
@@ -168,6 +182,14 @@
             .text(function(d) {
                 return "USE HTTPS";
             });
+    }
+
+    function parseDate(dateString) {
+        var date = new Date(dateString);
+        var month = date.getMonth();
+        var day = date.getDate();
+
+        return day + " " + monthNames[month];
     }
 
 })
