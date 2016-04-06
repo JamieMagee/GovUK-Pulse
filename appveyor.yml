@@ -1,9 +1,6 @@
 version: 1.0.{build}
 configuration: Release
 platform: Any CPU
-environment:
-  webdeploy_pass:
-    secure: 8KN7P+3yRejVtcLp4XsOrngOVgKHeYL8z/V/iIk0mPirfADzLO5882blRWEwvHvIVK0aQLi7ew15cb+XFGFrdA==
 install:
   - dnvm update-self
   - dnvm install 1.0.0-rc1-final
@@ -32,7 +29,8 @@ deploy:
   server: https://govuk.scm.azurewebsites.net:443/msdeploy.axd?site=govuk
   website: govuk
   username: $govuk
-  password: %webdeploy_pass%
+  password:
+    secure: 8KN7P+3yRejVtcLp4XsOrngOVgKHeYL8z/V/iIk0mPirfADzLO5882blRWEwvHvIVK0aQLi7ew15cb+XFGFrdA==
   artifact: AppOutput\GovUk.zip
   aspnet_core: true
   ntlm: false
@@ -44,7 +42,8 @@ deploy:
 - provider: AzureWebJob
   website: govuk
   username: $govuk
-  password: %webdeploy_pass%
+  password:
+    secure: 8KN7P+3yRejVtcLp4XsOrngOVgKHeYL8z/V/iIk0mPirfADzLO5882blRWEwvHvIVK0aQLi7ew15cb+XFGFrdA==  
   artifact: SslScanner\bin\SslScanner.zip
   job_name: SslScanner
   job_schedule: 0 0 0 * * *
