@@ -4,7 +4,10 @@ platform: Any CPU
 install:
   - dnvm update-self
   - dnvm install 1.0.0-rc1-final -a x64
-cache: C:\Users\appveyor\.dnx\packages
+cache:
+  - C:\Users\appveyor\.dnx\packages
+  - node_modules
+  - packages -> **\packages.config
 before_build:
   - nuget restore
   - dnu restore
