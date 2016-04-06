@@ -4,8 +4,6 @@ platform: Any CPU
 install:
   - dnvm update-self
   - dnvm install 1.0.0-rc1-final -a x64
-  - dnvm list
-  - dnvm use 1.0.0-rc1-final -a x64
 cache: C:\Users\appveyor\.dnx\packages
 before_build:
   - nuget restore
