@@ -78,7 +78,6 @@
         }
         return data;
     };
-    //https://govuk.blob.core.windows.net/scans/latest.json
 
     $("table").DataTable({
         ajax: function(data, callback, settings) {
@@ -115,13 +114,13 @@
     function renderChart() {
         var total = $("table").DataTable().column(2).data().count();
         var http = ($("table").DataTable().column(2).data().filter(function(value) {
-            return value === -1 ? true : false;
+            return value <= 0 ? true : false;
         }).count() / total * 100).toPrecision(2);
         var https = (100 - http).toPrecision(2);
 
         var data = [
-            { "status": "inactive", "value": http },
-            { "status": "active", "value": https }
+            { "status": "active", "value": https },
+            { "status": "inactive", "value": http }
         ];
 
         var chart = d3.select(".https_chart");
