@@ -2,6 +2,7 @@
 /// <reference path="../gulpfile.js" />
 /// <reference path="js/ga.js" />
 /// <reference path="js/site.js" />
+/// <reference path="js/site.min.js" />
 /// <reference path="lib/bootstrap/dist/js/bootstrap.js" />
 /// <reference path="lib/d3/d3.js" />
 /// <reference path="lib/datatables/media/js/jquery.dataTables.js" />
