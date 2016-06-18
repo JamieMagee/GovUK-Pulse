@@ -9,7 +9,7 @@ build:
   parallel: true
   verbosity: quiet
 after_build:
-  - dotnet publish GovUk -o AppOutput\GovUk --configuration Release --quiet
+  - dotnet publish GovUk -o AppOutput\GovUk --configuration Release
 test: off
 artifacts:
 - path: AppOutput\GovUK
