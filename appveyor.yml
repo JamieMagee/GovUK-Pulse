@@ -1,23 +1,19 @@
 version: 1.0.{build}
 configuration: Release
 platform: Any CPU
-install:
-  - dnvm update-self
-  - dnvm install 1.0.0-rc1-final -a x64
 cache:
   - C:\Users\appveyor\.dnx\packages
   - node_modules
   - packages -> **\packages.config
 before_build:
   - nuget restore
-  - dnu restore
+  - dotnet restore GovUk\project.json
+  - npm install -g bower gulp
 build:
   parallel: true
   verbosity: quiet
 after_build:
-  - npm install -g bower
-  - npm install -g gulp
-  - dnu publish GovUk -o AppOutput\GovUk --configuration Release --runtime dnx-clr-win-x86.1.0.0-rc1-final --wwwroot-out "wwwroot" --quiet
+  - dotnet publish GovUk -o AppOutput\GovUk --configuration Release --quiet
 test: off
 artifacts:
 - path: AppOutput\GovUK
