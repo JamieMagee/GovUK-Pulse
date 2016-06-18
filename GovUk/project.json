@@ -3,8 +3,8 @@
 
   "dependencies": {
     "Microsoft.NETCore.App": {
-      "version": "1.0.0-rc2-3002702",
-      "type": "platform"
+      "version": "1.0.0-rc2-3002702"
+
     },
     "Microsoft.ApplicationInsights.AspNetCore": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0-rc2-final",
@@ -42,7 +42,9 @@
   },
 
   "runtimes": {
-    "win10-x64": { }
+    "win10-x64": { },
+    "win8-x64": { },
+    "win7-x64": { }
   },
 
   "tools": {
@@ -75,9 +77,9 @@
   },
 
   "frameworks": {
-    "netcoreapp1.0": {
+    "net461": {
       "imports": [
-        "dotnet5.6",
+        "netcoreapp1.0",
         "dnxcore50",
         "portable-net45+win8"
       ]

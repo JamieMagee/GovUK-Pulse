@@ -1,10 +1,6 @@
 version: 1.0.{build}
 configuration: Release
 platform: Any CPU
-cache:
-  - C:\Users\appveyor\.dnx\packages
-  - node_modules
-  - packages -> **\packages.config
 before_build:
   - nuget restore
   - dotnet restore GovUk\project.json
