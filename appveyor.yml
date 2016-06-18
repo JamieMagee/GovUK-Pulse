@@ -28,7 +28,7 @@ deploy:
   aspnet_core: true
   ntlm: false
   remove_files: false
-  app_offline: false
+  app_offline: true
   aspnet_core_force_restart: true
   on:
     branch: master
