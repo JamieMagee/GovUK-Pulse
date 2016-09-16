@@ -1,44 +1,46 @@
+os: Visual Studio 2015
 version: 1.0.{build}
-configuration: Release
-platform: Any CPU
-before_build:
-  - nuget restore
-  - dotnet restore GovUk\project.json
-  - npm install -g bower gulp
-build:
-  parallel: true
-  verbosity: quiet
-after_build:
-  - dotnet publish GovUk -o AppOutput\GovUk --configuration Release --no-build
-test: off
+
+environment:
+  CLI_VERSION: 1.0.0-preview2-003121
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  NUGET_XMLDOC_MODE: skip
+
+install:
+  - ps: npm install npm@3.10.7 -g
+  - ps: npm -v
+  - ps: npm install -g bower --loglevel=error
+  - ps: npm install -g gulp --loglevel=error
+
+build_script:
+  - ps: dotnet --info
+  - ps: .\Build.ps1
+
 artifacts:
-- path: AppOutput\GovUK
-  name: GovUk
-  type: WebDeployPackage
-- path: SslScanner\bin\Release
-  name: SslScanner
+  - path: artifacts\publish
+    name: GovUk
+  - path: SslScanner\bin\Release
+    name: SslScanner
+
 deploy:
-- provider: WebDeploy
-  server: https://govuk.scm.azurewebsites.net:443/msdeploy.axd?site=govuk
-  website: govuk
-  username: $govuk
-  password:
-    secure: 8KN7P+3yRejVtcLp4XsOrngOVgKHeYL8z/V/iIk0mPirfADzLO5882blRWEwvHvIVK0aQLi7ew15cb+XFGFrdA==
-  artifact: AppOutput\GovUk.zip
-  aspnet_core: true
-  ntlm: false
-  remove_files: false
-  app_offline: true
-  aspnet_core_force_restart: true
-  on:
-    branch: master
-- provider: AzureWebJob
-  website: govuk
-  username: $govuk
-  password:
-    secure: 8KN7P+3yRejVtcLp4XsOrngOVgKHeYL8z/V/iIk0mPirfADzLO5882blRWEwvHvIVK0aQLi7ew15cb+XFGFrdA==  
-  artifact: SslScanner\bin\SslScanner.zip
-  job_name: SslScanner
-  job_schedule: 0 0 0 * * *
-  on:
-    branch: master
+  - provider: WebDeploy
+    server: https://govuk.scm.azurewebsites.net:443/msdeploy.axd?site=govuk
+    website: govuk
+    username: $govuk
+    password:
+      secure: 8KN7P+3yRejVtcLp4XsOrngOVgKHeYL8z/V/iIk0mPirfADzLO5882blRWEwvHvIVK0aQLi7ew15cb+XFGFrdA==
+    artifact: artifacts\GovUk.zip
+    remove_files: false
+    app_offline: true
+    on:
+      branch: master
+  - provider: AzureWebJob
+    website: govuk
+    username: $govuk
+    password:
+      secure: 8KN7P+3yRejVtcLp4XsOrngOVgKHeYL8z/V/iIk0mPirfADzLO5882blRWEwvHvIVK0aQLi7ew15cb+XFGFrdA==  
+    artifact: SslScanner\bin\SslScanner.zip
+    job_name: SslScanner
+    job_schedule: 0 0 0 * * *
+    on:
+      branch: master

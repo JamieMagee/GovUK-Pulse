@@ -124,19 +124,19 @@
         ];
 
         var chart = d3.select(".https_chart");
-        var elem = chart[0][0];
+        var elem = chart.node();
         var width = chart.attr("data-width");
         if (width == null)
             width = getComputedStyle(elem.parentElement).width;
         width = parseInt(width);
         var height = width * 1.2;
         var radius = Math.min(width, height) / 2;
-        var color = d3.scale.ordinal()
+        var color = d3.scaleOrdinal()
             .range(["#7ED321", "#FFFFFF"]);
-        var arc = d3.svg.arc()
+        var arc = d3.arc()
             .outerRadius(radius)
             .innerRadius(radius - 40);
-        var pie = d3.layout.pie()
+        var pie = d3.pie()
             .value(function(d) {
                 return d.value;
             })
