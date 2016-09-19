@@ -2,7 +2,7 @@ GOV.UK Pulse [![Build status](https://ci.appveyor.com/api/projects/status/57wip4
 ============
 Measuring HTTPS support on GOV.UK domains
 
-![](https://i.imgur.com/p9XlS28.png)
+![](https://i.imgur.com/wHXedMk.png)
 
 Building
 ========
