@@ -7,7 +7,7 @@ param(
 
 $solutionPath  = Split-Path $MyInvocation.MyCommand.Definition
 $framework     = "netcoreapp1.0"
-$dotnetVersion = "1.0.0-preview2-003121"
+$dotnetVersion = "1.0.0-preview3-003618"
 
 if ($OutputPath -eq "") {
     $OutputPath = "$(Convert-Path "$PSScriptRoot")\artifacts"
