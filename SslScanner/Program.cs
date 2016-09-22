@@ -35,9 +35,13 @@ namespace SslScanner
             var blobClient = storageAccount.CreateCloudBlobClient();
             var container = blobClient.GetContainerReference("scans");
             container.CreateIfNotExists();
-            var blob = container.GetBlockBlobReference("latest.json");
 
-            blob.UploadText(JsonConvert.SerializeObject(scores));
+            var latest = container.GetBlockBlobReference("latest.json");
+            var today = container.GetBlockBlobReference("historical/" + DateTime.UtcNow.ToString("yyyy-MM-dd") + ".json");
+
+            var json = JsonConvert.SerializeObject(scores);
+            latest.UploadText(json);
+            today.UploadText(json);
         }
     }
 }
