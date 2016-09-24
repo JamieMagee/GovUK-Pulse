@@ -11,6 +11,8 @@ using Newtonsoft.Json.Linq;
 using SslLabsLib;
 using SslLabsLib.Enums;
 using SslLabsLib.Objects;
+using SslScanner.Enums;
+using SslScanner.Objects;
 using Timer = System.Timers.Timer;
 
 namespace SslScanner
@@ -35,7 +37,7 @@ namespace SslScanner
             _input = input;
         }
 
-        public IEnumerable<GovDomain> Run()
+        public List<GovDomain> Run()
         {
             var completedTasks = 0;
             var client = new SslLabsClient(new Uri("https://api.ssllabs.com/api/v2/"));
@@ -46,11 +48,7 @@ namespace SslScanner
             foreach (var canonical in _input)
             {
                 var domain = canonical.Replace("www.", "").Replace("http://", "").Replace("https://", "");
-                _resultsList.Add(new GovDomain
-                {
-                    Canonical = canonical,
-                    Domain = domain
-                });
+                _resultsList.Add(new GovDomain(canonical, domain));
                 domains.Enqueue(domain);
             }
 
@@ -155,9 +153,8 @@ namespace SslScanner
                         }
                     }
 
-                    var tmp = _resultsList.Find(x => x.Domain.Equals(domain));
+                    var tmp = _resultsList.Find(x => x.domain.Equals(domain));
                     tmp.grade = GetWorstEndpoint(innerAnalysis);
-                    tmp.https = GovDomain.GradeToHttps(tmp.grade);
                     Console.WriteLine("Completed " + domain);
 
                     Interlocked.Increment(ref completedTasks);
@@ -185,19 +182,19 @@ namespace SslScanner
             return _resultsList;
         }
 
-        private static GovDomain.Grade GetWorstEndpoint(Analysis analysis)
+        private static Grade GetWorstEndpoint(Analysis analysis)
         {
-            return analysis.Endpoints.Aggregate(GovDomain.Grade.Aplus,
+            return analysis.Endpoints.Aggregate(Grade.Aplus,
                 (current, endpoint) => current < ConvertToEnum(endpoint) ? current : ConvertToEnum(endpoint));
         }
 
-        private static GovDomain.Grade ConvertToEnum(Endpoint endpoint)
+        private static Grade ConvertToEnum(Endpoint endpoint)
         {
             return endpoint.Grade == null
                 ? SslLabsError.Contains(endpoint.StatusMessage)
-                    ? GovDomain.Grade.NoHttps
-                    : EnumEx.GetValueFromDescription<GovDomain.Grade>(endpoint.StatusMessage)
-                : EnumEx.GetValueFromDescription<GovDomain.Grade>(endpoint.Grade);
+                    ? Grade.NoHttps
+                    : EnumEx.GetValueFromDescription<Grade>(endpoint.StatusMessage)
+                : EnumEx.GetValueFromDescription<Grade>(endpoint.Grade);
         }
 
         private static List<string> GetChromePreloadList()
