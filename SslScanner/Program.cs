@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 using Newtonsoft.Json;
 using SslScanner.Objects;
 
@@ -24,22 +25,31 @@ namespace SslScanner
 
         private static void UpdateBlobStorage(List<GovDomain> scores)
         {
-            var storageAccount = CloudStorageAccount.Parse(
-                Environment.GetEnvironmentVariable("Data:ConnectionString"));
+            var storageAccount = CloudStorageAccount.Parse(Environment.GetEnvironmentVariable("Data:ConnectionString"));
 
             var blobClient = storageAccount.CreateCloudBlobClient();
             var container = blobClient.GetContainerReference("scans");
             container.CreateIfNotExists();
 
             var latestBlob = container.GetBlockBlobReference("latest.json");
-            var todayBlob = container.GetBlockBlobReference("historical/" + DateTime.UtcNow.ToString("yyyy-MM-dd") + ".json");
-            var yesterdayBlob = container.GetBlockBlobReference("historical/" + DateTime.UtcNow.AddDays(-1).ToString("yyyy-MM-dd") + ".json");
+            var todayBlob =
+                container.GetBlockBlobReference("historical/" + DateTime.UtcNow.ToString("yyyy-MM-dd") + ".json");
             var changesBlob = container.GetBlockBlobReference("changes.json");
 
-            var changes = JsonConvert.DeserializeObject<List<ChangeSet>>(changesBlob.DownloadText());
-            var yesterdayScores = JsonConvert.DeserializeObject<List<GovDomain>>(yesterdayBlob.DownloadText());
+            var lastScores = GetLastScores(container);
 
-            changes.Add(new ResultsDiff(yesterdayScores, scores).Run());
+            var changes = new List<ChangeSet>();
+
+            try
+            {
+                changes = JsonConvert.DeserializeObject<List<ChangeSet>>(changesBlob.DownloadText());
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+
+            changes.Add(new ResultsDiff(lastScores, scores).Run());
 
             var todayJson = JsonConvert.SerializeObject(scores);
             var changesJson = JsonConvert.SerializeObject(changes);
@@ -47,6 +57,25 @@ namespace SslScanner
             latestBlob.UploadText(todayJson);
             todayBlob.UploadText(todayJson);
             changesBlob.UploadText(changesJson);
+        }
+
+        private static List<GovDomain> GetLastScores(CloudBlobContainer container)
+        {
+            List<GovDomain> lastScores = null;
+            var days = -1;
+            while (lastScores == null)
+                try
+                {
+                    var lastBlob =
+                        container.GetBlockBlobReference("historical/" +
+                                                        DateTime.UtcNow.AddDays(days).ToString("yyyy-MM-dd") + ".json");
+                    lastScores = JsonConvert.DeserializeObject<List<GovDomain>>(lastBlob.DownloadText());
+                }
+                catch (Exception)
+                {
+                    days--;
+                }
+            return lastScores;
         }
     }
 }
