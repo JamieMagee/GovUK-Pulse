@@ -1,9 +1,9 @@
-﻿{
+{
 
   "dependencies": {
     "Autofac": "4.1.1",
     "Autofac.Extensions.DependencyInjection": "4.0.0",
-    "Microsoft.ApplicationInsights.AspNetCore": "1.0.0",
+    "Microsoft.ApplicationInsights.AspNetCore": "1.0.1",
     "Microsoft.AspNetCore.CookiePolicy": "1.0.0",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
     "Microsoft.AspNetCore.HttpOverrides": "1.0.0",
