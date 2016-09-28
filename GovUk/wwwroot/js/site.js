@@ -59,7 +59,7 @@
             return data;
         else
             return "" +
-                "<a href=\"" + row["Canonical"] + "\" target=\"blank\">" +
+                "<a href=\"" + row["canonical"] + "\" target=\"blank\">" +
                 data +
                 "</a>";
     };
@@ -73,7 +73,7 @@
             if (grade === "")
                 return "";
             else
-                return "<a href=\"" + labsUrlFor(row["Domain"]) + "\" target=\"blank\">" +
+                return "<a href=\"" + labsUrlFor(row["domain"]) + "\" target=\"blank\">" +
                     grade + "</a>";
         }
         return data;
