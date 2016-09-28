@@ -93,7 +93,7 @@
         },
         columns: [
             {
-                data: "Domain",
+                data: "domain",
                 render: linkDomain
             },
             {
