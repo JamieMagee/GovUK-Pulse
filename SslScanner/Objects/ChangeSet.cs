@@ -7,7 +7,9 @@ namespace SslScanner.Objects
 {
     public class ChangeSet
     {
+        [JsonProperty("date")]
         private string date;
+        [JsonProperty("diffList")]
         public List<Diff> diffList { get; } = new List<Diff>();
 
         public ChangeSet()
@@ -17,15 +19,17 @@ namespace SslScanner.Objects
 
         public class Diff
         {
+            [JsonProperty("canonical")]
             private string canonical;
+            [JsonProperty("domain")]
             private string domain;
-            [JsonProperty("old_grade")]
+            [JsonProperty("oldGrade")]
             private Grade oldGrade;
-            [JsonProperty("new_grade")]
+            [JsonProperty("newGrade")]
             private Grade newGrade;
-            [JsonProperty("old_https")]
+            [JsonProperty("oldHttps")]
             private Https oldHttps;
-            [JsonProperty("new_https")]
+            [JsonProperty("newHttps")]
             private Https newHttps;
 
             public Diff(GovDomain previous, GovDomain current)

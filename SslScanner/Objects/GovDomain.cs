@@ -1,12 +1,16 @@
-﻿using SslScanner.Enums;
+﻿using Newtonsoft.Json;
+using SslScanner.Enums;
 
 namespace SslScanner.Objects
 {
     public class GovDomain
     {
+        [JsonProperty("canonical")]
         public string canonical { get; }
+        [JsonProperty("domain")]
         public string domain { get; }
         private Grade _grade;
+        [JsonProperty("grade")]
         public Grade grade
         {
             get { return _grade; }
@@ -16,6 +20,7 @@ namespace SslScanner.Objects
                 https = GradeToHttps(value);
             }
         }
+        [JsonProperty("https")]
         public Https https { get; private set; }
 
         public GovDomain(string canonical, string domain)
