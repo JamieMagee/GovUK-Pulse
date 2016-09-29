@@ -32,8 +32,7 @@ namespace SslScanner
             container.CreateIfNotExists();
 
             var latestBlob = container.GetBlockBlobReference("latest.json");
-            var todayBlob =
-                container.GetBlockBlobReference("historical/" + DateTime.UtcNow.ToString("yyyy-MM-dd") + ".json");
+            var todayBlob = container.GetBlockBlobReference("historical/" + DateTime.UtcNow.ToString("yyyy-MM-dd") + ".json");
             var changesBlob = container.GetBlockBlobReference("changes.json");
 
             var lastScores = GetLastScores(container);
@@ -61,20 +60,20 @@ namespace SslScanner
 
         private static List<GovDomain> GetLastScores(CloudBlobContainer container)
         {
-            List<GovDomain> lastScores = null;
-            var days = -1;
-            while (lastScores == null)
+            var lastScores = new List<GovDomain>();
+            for (var days = -1; days >= -31; days--)
+            {
                 try
                 {
-                    var lastBlob =
-                        container.GetBlockBlobReference("historical/" +
-                                                        DateTime.UtcNow.AddDays(days).ToString("yyyy-MM-dd") + ".json");
+                    var lastBlob = container.GetBlockBlobReference("historical/" + DateTime.UtcNow.AddDays(days).ToString("yyyy-MM-dd") + ".json");
                     lastScores = JsonConvert.DeserializeObject<List<GovDomain>>(lastBlob.DownloadText());
+                    break;
                 }
                 catch (Exception)
                 {
-                    days--;
+                    // ignored
                 }
+            }
             return lastScores;
         }
     }
