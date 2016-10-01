@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace SslScanner.Enums
+namespace GovUk.SslScanner.Enums
 {
     public enum Grade
     {

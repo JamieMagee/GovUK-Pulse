@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using SslScanner.Objects;
+using GovUk.SslScanner.Objects;
 
-namespace SslScanner
+namespace GovUk.SslScanner
 {
     public class ResultsDiff
     {

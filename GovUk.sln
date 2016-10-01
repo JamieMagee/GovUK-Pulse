@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SslScanner", "SslScanner\SslScanner.csproj", "{534ECB71-6E99-474E-8141-D09F814FD172}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GovUk.SslScanner", "GovUk.SslScanner\GovUk.SslScanner.csproj", "{534ECB71-6E99-474E-8141-D09F814FD172}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "GovUk", "GovUK\GovUk.xproj", "{26F6A0C0-14FA-4954-A23B-E7807D601BC3}"
 EndProject

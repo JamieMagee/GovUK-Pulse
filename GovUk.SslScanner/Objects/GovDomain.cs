@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using SslScanner.Enums;
+using GovUk.SslScanner.Enums;
 
-namespace SslScanner.Objects
+namespace GovUk.SslScanner.Objects
 {
     public class GovDomain
     {

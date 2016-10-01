@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using SslScanner.Enums;
+using GovUk.SslScanner.Enums;
 
-namespace SslScanner.Objects
+namespace GovUk.SslScanner.Objects
 {
     public class ChangeSet
     {

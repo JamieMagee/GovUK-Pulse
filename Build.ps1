@@ -64,11 +64,11 @@ $coreProjects = @(
 )
 
 $MsBuildProjects = @(
-	(Join-Path $solutionPath "SslScanner\SslScanner.csproj")
+	(Join-Path $solutionPath "GovUk.SslScanner\GovUk.SslScanner.csproj")
 )
 
 $NugetPackageConfigs = @(
-	(Join-Path $solutionPath "SslScanner\packages.config")
+	(Join-Path $solutionPath "GovUk.SslScanner\packages.config")
 )
 
 $publishCoreProjects = @(

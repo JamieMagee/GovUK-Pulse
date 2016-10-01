@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Newtonsoft.Json;
-using SslScanner.Objects;
+using GovUk.SslScanner.Objects;
 
-namespace SslScanner
+namespace GovUk.SslScanner
 {
     internal static class Program
     {
