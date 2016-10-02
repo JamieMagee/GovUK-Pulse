@@ -41,7 +41,7 @@ namespace SslScanner
 
             try
             {
-                changes = JsonConvert.DeserializeObject<List<ChangeSet>>(changesBlob.DownloadText());
+                changes.AddRange(JsonConvert.DeserializeObject<List<ChangeSet>>(changesBlob.DownloadText()));
             }
             catch (Exception)
             {
