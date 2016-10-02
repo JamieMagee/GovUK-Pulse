@@ -19,8 +19,8 @@ build_script:
 artifacts:
   - path: artifacts\publish
     name: GovUk
-  - path: SslScanner\bin\Release
-    name: SslScanner
+  - path: GovUk.SslScanner\bin\Release
+    name: GovUk.SslScanner
 
 deploy:
   - provider: WebDeploy
@@ -39,8 +39,8 @@ deploy:
     username: $govuk
     password:
       secure: 8KN7P+3yRejVtcLp4XsOrngOVgKHeYL8z/V/iIk0mPirfADzLO5882blRWEwvHvIVK0aQLi7ew15cb+XFGFrdA==  
-    artifact: SslScanner\bin\SslScanner.zip
-    job_name: SslScanner
+    artifact: GovUk.SslScanner\bin\GovUk.SslScanner.zip
+    job_name: GovUk.SslScanner
     job_schedule: 0 0 0 * * *
     on:
       branch: master

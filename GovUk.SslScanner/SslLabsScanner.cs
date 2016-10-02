@@ -11,11 +11,11 @@ using Newtonsoft.Json.Linq;
 using SslLabsLib;
 using SslLabsLib.Enums;
 using SslLabsLib.Objects;
-using SslScanner.Enums;
-using SslScanner.Objects;
+using GovUk.SslScanner.Enums;
+using GovUk.SslScanner.Objects;
 using Timer = System.Timers.Timer;
 
-namespace SslScanner
+namespace GovUk.SslScanner
 {
     internal class SslLabsScanner
     {

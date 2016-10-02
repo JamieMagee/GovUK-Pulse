@@ -1,4 +1,4 @@
-﻿namespace SslScanner.Enums
+﻿namespace GovUk.SslScanner.Enums
 {
     public enum Https
     {
