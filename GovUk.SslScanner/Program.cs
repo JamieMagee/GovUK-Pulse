@@ -12,7 +12,7 @@ namespace GovUk.SslScanner
         private static void Main()
         {
             const string readFile =
-                @"https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/465282/gov.uk_domains_as_of_01Oct_2015.csv";
+                @"https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/557592/List_of_gov.uk_domains_as_of_1_Oct_2016.csv";
 
             var domains = GetDomains(readFile);
             var scores = GetScores(domains);
