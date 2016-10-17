@@ -7,7 +7,7 @@ environment:
   NUGET_XMLDOC_MODE: skip
 
 install:
-  - ps: npm install npm@3.10.8 -g
+  - ps: npm install npm@3.10.9 -g
   - ps: npm -v
   - ps: npm install -g bower --loglevel=error
   - ps: npm install -g gulp --loglevel=error
