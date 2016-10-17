@@ -106,8 +106,8 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SslLabsLib, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SslLabsLib.0.4.0\lib\SslLabsLib.dll</HintPath>
+    <Reference Include="SslLabsLib, Version=0.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SslLabsLib.0.4.1\lib\SslLabsLib.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
