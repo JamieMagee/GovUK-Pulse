@@ -17,7 +17,7 @@ using Timer = System.Timers.Timer;
 
 namespace GovUk.SslScanner
 {
-    internal class SslLabsScanner
+    public class SslLabsScanner
     {
         private static readonly List<string> SslLabsError = new List<string>
         {
@@ -47,7 +47,7 @@ namespace GovUk.SslScanner
             var domains = new Queue<string>();
             foreach (var canonical in _input)
             {
-                var domain = canonical.Replace("www.", "").Replace("http://", "").Replace("https://", "");
+                var domain = canonical.Replace("http://", "").Replace("https://", "");
                 _resultsList.Add(new GovDomain(canonical, domain));
                 domains.Enqueue(domain);
             }

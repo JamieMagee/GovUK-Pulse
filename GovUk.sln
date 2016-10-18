@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GovUk.SslScanner", "GovUk.S
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "GovUk", "GovUK\GovUk.xproj", "{26F6A0C0-14FA-4954-A23B-E7807D601BC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GovUk.SslScanner.Test", "GovUk.SslScanner.Test\GovUk.SslScanner.Test.csproj", "{7AD98C76-DD70-4D9A-94A2-05CDF6D67368}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{26F6A0C0-14FA-4954-A23B-E7807D601BC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26F6A0C0-14FA-4954-A23B-E7807D601BC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26F6A0C0-14FA-4954-A23B-E7807D601BC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AD98C76-DD70-4D9A-94A2-05CDF6D67368}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AD98C76-DD70-4D9A-94A2-05CDF6D67368}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AD98C76-DD70-4D9A-94A2-05CDF6D67368}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AD98C76-DD70-4D9A-94A2-05CDF6D67368}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
