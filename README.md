@@ -1,4 +1,4 @@
-GOV.UK Pulse [![Build status](https://ci.appveyor.com/api/projects/status/57wip4extg7cs7i2?svg=true)](https://ci.appveyor.com/project/JamieMagee/govuk-pulse) [![Dependency Status](https://www.versioneye.com/user/projects/57dfd9966dfcd0003e7f540b/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57dfd9966dfcd0003e7f540b)
+GOV.UK Pulse [![Build status](https://ci.appveyor.com/api/projects/status/57wip4extg7cs7i2?svg=true)](https://ci.appveyor.com/project/JamieMagee/govuk-pulse) [![Libraries.io for GitHub](https://img.shields.io/librariesio/github/jamiemagee/GovUk-Pulse.svg)](https://libraries.io/github/JamieMagee/GovUK-Pulse)
 ============
 Measuring HTTPS support on GOV.UK domains
 
