@@ -1,4 +1,5 @@
-﻿$(document).ready(function() {
+﻿"use strict";
+$(document).ready(function () {
 
 
     var names = {
@@ -45,54 +46,56 @@
         "November", "December"
     ];
 
-    var display = function(set) {
-        return function(data, type) {
-            if (type === "sort")
+    var display = function (set) {
+        return function (data, type) {
+            if (type === "sort") {
                 return data;
-            else
+            } else {
                 return set[data.toString()];
+            }
         };
     };
 
-    var linkDomain = function(data, type, row) {
-        if (type === "sort")
+    var linkDomain = function (data, type, row) {
+        if (type === "sort") {
             return data;
-        else
+        } else {
             return "" +
-                "<a href=\"" + row["canonical"] + "\" target=\"blank\">" +
+                "<a href=\"" + row.canonical + "\" target=\"blank\">" +
                 data +
                 "</a>";
+        }
     };
-    var labsUrlFor = function(domain) {
+    var labsUrlFor = function (domain) {
         return "https://www.ssllabs.com/ssltest/analyze.html?d=" + domain;
     };
 
-    var linkGrade = function(data, type, row) {
+    var linkGrade = function (data, type, row) {
         if (type === "display" || type === "filter") {
             var grade = display(names.grade)(data, type);
-            if (grade === "")
+            if (grade === "") {
                 return "";
-            else
-                return "<a href=\"" + labsUrlFor(row["domain"]) + "\" target=\"blank\">" +
+            } else {
+                return "<a href=\"" + labsUrlFor(row.domain) + "\" target=\"blank\">" +
                     grade + "</a>";
+            }
         }
         return data;
     };
 
     $("table").DataTable({
-        ajax: function(data, callback, settings) {
+        ajax: function (data, callback, settings) {
             settings.sAjaxDataProp = "";
             $.getJSON(
                 "https://govuk.blob.core.windows.net/scans/latest.json"
-            ).done(function(data, textStatus, request) {
+            ).done(function (data, textStatus, request) {
                 $(".last-modified").text(parseDate(request.getResponseHeader("Last-Modified")));
                 callback(
                     data
                 );
             });
         },
-        columns: [
-            {
+        columns: [{
                 data: "domain",
                 render: linkDomain
             },
@@ -113,21 +116,27 @@
 
     function renderChart() {
         var total = $("table").DataTable().column(2).data().count();
-        var http = ($("table").DataTable().column(2).data().filter(function(value) {
+        var http = ($("table").DataTable().column(2).data().filter(function (value) {
             return value <= 0 ? true : false;
         }).count() / total * 100).toPrecision(2);
         var https = (100 - http).toPrecision(2);
 
-        var data = [
-            { "status": "active", "value": https },
-            { "status": "inactive", "value": http }
+        var data = [{
+                "status": "active",
+                "value": https
+            },
+            {
+                "status": "inactive",
+                "value": http
+            }
         ];
 
         var chart = d3.select(".https_chart");
         var elem = chart.node();
         var width = chart.attr("data-width");
-        if (width == null)
+        if (width === null) {
             width = getComputedStyle(elem.parentElement).width;
+        }
         width = parseInt(width);
         var height = width * 1.2;
         var radius = Math.min(width, height) / 2;
@@ -137,7 +146,7 @@
             .outerRadius(radius)
             .innerRadius(radius - 40);
         var pie = d3.pie()
-            .value(function(d) {
+            .value(function (d) {
                 return d.value;
             })
             .sort(null);
@@ -152,15 +161,15 @@
             .enter().append("g")
             .attr("class", "arc");
         g.append("path")
-            .style("fill", function(d) {
+            .style("fill", function (d) {
                 return color(d.data.status);
             })
-            .transition().delay(function(d, i) {
+            .transition().delay(function (d, i) {
                 return i * 400;
             }).duration(400)
-            .attrTween("d", function(d) {
+            .attrTween("d", function (d) {
                 var i = d3.interpolate(d.startAngle + 0.1, d.endAngle);
-                return function(t) {
+                return function (t) {
                     d.endAngle = i(t);
                     return arc(d);
                 };
@@ -170,7 +179,7 @@
             .attr("class", "total-value")
             .attr("dy", "0.2em")
             .attr("fill", "white")
-            .text(function(d) {
+            .text(function () {
                 return "" + data[0].value + "%";
             });
         g.append("text")
@@ -178,7 +187,7 @@
             .attr("class", "total-desc")
             .attr("dy", "2.5em")
             .attr("fill", "white")
-            .text(function(d) {
+            .text(function () {
                 return "USE HTTPS";
             });
     }
@@ -206,4 +215,4 @@
         return i + "th";
     }
 
-})
+});

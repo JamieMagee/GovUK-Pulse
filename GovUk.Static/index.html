@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000">
+    <title>GOV.UK Pulse</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/dataTables.bootstrap.min.css" />
+    <link rel="stylesheet" href="css/responsive.bootstrap.min.css" />
+    <link rel="stylesheet" href="css/site.min.css" />
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">GOV.UK Pulse</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="about">About</a>
+                    </li>
+                    <li>
+                        <a href="https://jamiemagee.co.uk">Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <header>
+
+        <div class="https_chart col-md-offset-1 col-md-4" data-width="250"></div>
+
+        <div class="description col-md-6">
+            <h1>Secure HTTP (HTTPS)</h1>
+            <h2>
+                Last updated <strong class="last-modified"></strong>
+            </h2>
+            <p>
+                This data measures whether GOV.UK support the HTTPS protocol (<code>https://</code>), and the strength of
+                that support. HTTPS provides a secure connection across the internet between websites and their visitors,
+                and is becoming the new baseline for public web services.
+            </p>
+            <p>
+                Note that HTTPS generally <strong>does not affect</strong> whether a website is vulnerable to hacking.
+            </p>
+
+            <p>
+                HTTPS and TLS data was last collected through a scan of the public internet on the <strong class="last-modified"></strong>.
+            </p>
+        </div>
+
+    </header>
+
+    <div class="container body-content">
+        <table class="table display responsive nowrap">
+            <thead>
+                <tr>
+                    <th>Domain</th>
+                    <th>Uses HTTPS</th>
+                    <th>SSL Labs Grade</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>
+                This website was built by <a href="https://jamiemagee.co.uk">Jamie Magee</a> and is <a href="https://github.com/JamieMagee/GovUK-Pulse">released as open source</a>.
+                It is in <strong>no way</strong> affiliated with GOV.UK.
+            </p>
+            <p>
+                SSL Labs grades are used with permission, and powered by the <a href="https://www.ssllabs.com/">Qualys SSL Labs API</a>.
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/dataTables.responsive.min.js"></script>
+    <script src="js/responsive.bootstrap.min.js"></script>
+    <script src="js/site.min.js"></script>
+    <script src="js/ga.min.js"></script>
+
+</body>
+
+</html>

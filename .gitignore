@@ -306,6 +306,13 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
 connectionstring.json
 lib/
 *.min.*
+GovUk.Static/dist
