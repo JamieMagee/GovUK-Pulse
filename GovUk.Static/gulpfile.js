@@ -1,4 +1,3 @@
-/// <binding BeforeBuild='default' />
 var gulp = require('gulp'),
   htmlmin = require('gulp-htmlmin'),
   cdnizer = require("gulp-cdnizer"),
