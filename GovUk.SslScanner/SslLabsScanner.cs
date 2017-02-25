@@ -54,8 +54,7 @@ namespace GovUk.SslScanner
 
             var lastStatus = DateTime.UtcNow;
             var lastStatusLock = new object();
-
-            void PrintStatus()
+            Action printStatus = () =>
             {
                 lock (lastStatusLock)
                 {
@@ -64,9 +63,12 @@ namespace GovUk.SslScanner
 
                     lastStatus = DateTime.UtcNow;
 
-                    Console.WriteLine("Queue: " + domains.Count + ", running: " + client.CurrentAssesments + " (of " + client.MaxAssesments + "), " + "completed: " + completedTasks);
+                    Console.WriteLine("Queue: " + domains.Count +
+                                      ", running: " + client.CurrentAssesments +
+                                      " (of " + client.MaxAssesments + "), " +
+                                      "completed: " + completedTasks);
                 }
-            }
+            };
 
             var limitChangedEvent = new AutoResetEvent(false);
 
@@ -110,14 +112,14 @@ namespace GovUk.SslScanner
                     }
                     if (didStart == TryStartResult.Ok)
                     {
-                        PrintStatus();
+                        printStatus();
                         break;
                     }
 
                     // Wait for one to free up, fall back to trying every 30s
                     limitChangedEvent.WaitOne(30000);
 
-                    PrintStatus();
+                    printStatus();
                 }
 
                 // The task was started
@@ -161,7 +163,7 @@ namespace GovUk.SslScanner
             }
 
             var timer = new Timer(2000);
-            timer.Elapsed += (sender, eventArgs) => PrintStatus();
+            timer.Elapsed += (sender, eventArgs) => printStatus();
             timer.Start();
 
             while (true)
