@@ -38,7 +38,6 @@ namespace GovUk.SslScanner
                     {
                         var response = client.SendAsync(new HttpRequestMessage(HttpMethod.Head, Http + domain)).Result;
                         if (response.IsSuccessStatusCode && response.RequestMessage.RequestUri.Host.EndsWith("gov.uk"))
-                        {
                             lock (_resultsList)
                             {
                                 var finalDomain = response.RequestMessage.RequestUri.Scheme + "://" +
@@ -48,7 +47,6 @@ namespace GovUk.SslScanner
                                 if (_hostList.Add(host) && _resultsList.Add(finalDomain))
                                     Console.WriteLine("Added: " + finalDomain);
                             }
-                        }
                     }
                     catch (Exception)
                     {
@@ -79,9 +77,7 @@ namespace GovUk.SslScanner
             var csv = new CsvReader(reader);
             csv.Configuration.IgnoreHeaderWhiteSpace = true;
             while (csv.Read())
-            {
                 domains.Add(csv.GetField<string>(0));
-            }
             return domains;
         }
     }

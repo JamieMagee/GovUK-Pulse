@@ -7,12 +7,12 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using GovUk.SslScanner.Enums;
+using GovUk.SslScanner.Objects;
 using Newtonsoft.Json.Linq;
 using SslLabsLib;
 using SslLabsLib.Enums;
 using SslLabsLib.Objects;
-using GovUk.SslScanner.Enums;
-using GovUk.SslScanner.Objects;
 using Timer = System.Timers.Timer;
 
 namespace GovUk.SslScanner
@@ -54,7 +54,8 @@ namespace GovUk.SslScanner
 
             var lastStatus = DateTime.UtcNow;
             var lastStatusLock = new object();
-            Action printStatus = () =>
+
+            void PrintStatus()
             {
                 lock (lastStatusLock)
                 {
@@ -63,12 +64,9 @@ namespace GovUk.SslScanner
 
                     lastStatus = DateTime.UtcNow;
 
-                    Console.WriteLine("Queue: " + domains.Count +
-                                      ", running: " + client.CurrentAssesments +
-                                      " (of " + client.MaxAssesments + "), " +
-                                      "completed: " + completedTasks);
+                    Console.WriteLine("Queue: " + domains.Count + ", running: " + client.CurrentAssesments + " (of " + client.MaxAssesments + "), " + "completed: " + completedTasks);
                 }
-            };
+            }
 
             var limitChangedEvent = new AutoResetEvent(false);
 
@@ -92,7 +90,8 @@ namespace GovUk.SslScanner
                     }
                     catch (WebException ex)
                     {
-                        Console.WriteLine("(Name: " + domain + ") Webexception starting scan, waiting 3s: " + ex.Message);
+                        Console.WriteLine(
+                            "(Name: " + domain + ") Webexception starting scan, waiting 3s: " + ex.Message);
                         limitChangedEvent.WaitOne(3000);
                         continue;
                     }
@@ -111,14 +110,14 @@ namespace GovUk.SslScanner
                     }
                     if (didStart == TryStartResult.Ok)
                     {
-                        printStatus();
+                        PrintStatus();
                         break;
                     }
 
                     // Wait for one to free up, fall back to trying every 30s
                     limitChangedEvent.WaitOne(30000);
 
-                    printStatus();
+                    PrintStatus();
                 }
 
                 // The task was started
@@ -133,7 +132,6 @@ namespace GovUk.SslScanner
                         innerAnalysis = analysis;
 
                     while (innerAnalysis == null)
-                    {
                         try
                         {
                             // Block till we have an analysis
@@ -151,7 +149,6 @@ namespace GovUk.SslScanner
                                               ex.Message);
                             Thread.Sleep(30000);
                         }
-                    }
 
                     var tmp = _resultsList.Find(x => x.domain.Equals(domain));
                     tmp.grade = GetWorstEndpoint(innerAnalysis);
@@ -164,7 +161,7 @@ namespace GovUk.SslScanner
             }
 
             var timer = new Timer(2000);
-            timer.Elapsed += (sender, eventArgs) => printStatus();
+            timer.Elapsed += (sender, eventArgs) => PrintStatus();
             timer.Start();
 
             while (true)
@@ -202,7 +199,7 @@ namespace GovUk.SslScanner
             var preloadList = new List<string>();
             var res =
                 new HttpClient().GetStringAsync(
-                    "https://chromium.googlesource.com/chromium/src/net/+/master/http/transport_security_state_static.json?format=text")
+                        "https://chromium.googlesource.com/chromium/src/net/+/master/http/transport_security_state_static.json?format=text")
                     .Result;
             var plain = Convert.FromBase64String(res);
             var iso = Encoding.GetEncoding("UTF-8");
@@ -210,7 +207,6 @@ namespace GovUk.SslScanner
 
             var json = JObject.Parse(newData);
             foreach (var entry in json.SelectToken("entries"))
-            {
                 try
                 {
                     preloadList.Add(entry.SelectToken("name").ToString());
@@ -219,7 +215,6 @@ namespace GovUk.SslScanner
                 {
                     // ignored
                 }
-            }
             return preloadList;
         }
 
@@ -227,12 +222,12 @@ namespace GovUk.SslScanner
         {
             public static T GetValueFromDescription<T>(string description)
             {
-                var type = typeof (T);
+                var type = typeof(T);
                 if (!type.IsEnum) throw new InvalidOperationException();
                 foreach (var field in type.GetFields())
                 {
                     var attribute = Attribute.GetCustomAttribute(field,
-                        typeof (DescriptionAttribute)) as DescriptionAttribute;
+                        typeof(DescriptionAttribute)) as DescriptionAttribute;
                     if (attribute != null)
                     {
                         if (attribute.Description == description)

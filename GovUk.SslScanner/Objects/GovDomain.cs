@@ -1,15 +1,24 @@
-﻿using Newtonsoft.Json;
-using GovUk.SslScanner.Enums;
+﻿using GovUk.SslScanner.Enums;
+using Newtonsoft.Json;
 
 namespace GovUk.SslScanner.Objects
 {
     public class GovDomain
     {
+        private Grade _grade;
+
+        public GovDomain(string canonical, string domain)
+        {
+            this.canonical = canonical;
+            this.domain = domain;
+        }
+
         [JsonProperty("canonical")]
         public string canonical { get; }
+
         [JsonProperty("domain")]
         public string domain { get; }
-        private Grade _grade;
+
         [JsonProperty("grade")]
         public Grade grade
         {
@@ -20,14 +29,9 @@ namespace GovUk.SslScanner.Objects
                 https = GradeToHttps(value);
             }
         }
+
         [JsonProperty("https")]
         public Https https { get; private set; }
-
-        public GovDomain(string canonical, string domain)
-        {
-            this.canonical = canonical;
-            this.domain = domain;
-        }
 
         private bool Equals(GovDomain other)
         {
@@ -38,15 +42,15 @@ namespace GovUk.SslScanner.Objects
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((GovDomain)obj);
+            if (obj.GetType() != GetType()) return false;
+            return Equals((GovDomain) obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                return ((int)_grade * 397) ^ (int)https;
+                return ((int) _grade * 397) ^ (int) https;
             }
         }
 

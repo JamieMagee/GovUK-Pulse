@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GovUk.SslScanner;
+﻿using System.Collections.Generic;
 using GovUk.SslScanner.Enums;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GovUk.SslScanner.Test
 {

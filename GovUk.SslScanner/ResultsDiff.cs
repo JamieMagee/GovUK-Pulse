@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GovUk.SslScanner.Objects;
 
 namespace GovUk.SslScanner
 {
     public class ResultsDiff
     {
-        private readonly List<GovDomain> _previous;
         private readonly List<GovDomain> _current;
-        private ChangeSet changeSet = new ChangeSet();
+        private readonly List<GovDomain> _previous;
+        private readonly ChangeSet changeSet = new ChangeSet();
 
         public ResultsDiff(List<GovDomain> previous, List<GovDomain> current)
         {
@@ -21,10 +20,8 @@ namespace GovUk.SslScanner
             foreach (var previousDomain in _previous)
             {
                 var currentDomain = _current.Find(x => x.domain.Equals(previousDomain.domain));
-                if (currentDomain!= null && !currentDomain.Equals(previousDomain))
-                {
+                if (currentDomain != null && !currentDomain.Equals(previousDomain))
                     changeSet.diffList.Add(new ChangeSet.Diff(previousDomain, currentDomain));
-                }
             }
 
             return changeSet;

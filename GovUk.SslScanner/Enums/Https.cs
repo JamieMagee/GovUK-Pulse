@@ -6,5 +6,4 @@
         WithCertIssues = 1,
         No = 0
     }
-
 }

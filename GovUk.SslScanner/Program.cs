@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using GovUk.SslScanner.Objects;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Newtonsoft.Json;
-using GovUk.SslScanner.Objects;
 
 namespace GovUk.SslScanner
 {
@@ -32,7 +32,8 @@ namespace GovUk.SslScanner
             container.CreateIfNotExists();
 
             var latestBlob = container.GetBlockBlobReference("latest.json");
-            var todayBlob = container.GetBlockBlobReference("historical/" + DateTime.UtcNow.ToString("yyyy-MM-dd") + ".json");
+            var todayBlob = container.GetBlockBlobReference(
+                "historical/" + DateTime.UtcNow.ToString("yyyy-MM-dd") + ".json");
             var changesBlob = container.GetBlockBlobReference("changes.json");
 
             var lastScores = GetLastScores(container);
@@ -62,10 +63,10 @@ namespace GovUk.SslScanner
         {
             var lastScores = new List<GovDomain>();
             for (var days = -1; days >= -31; days--)
-            {
                 try
                 {
-                    var lastBlob = container.GetBlockBlobReference("historical/" + DateTime.UtcNow.AddDays(days).ToString("yyyy-MM-dd") + ".json");
+                    var lastBlob = container.GetBlockBlobReference(
+                        "historical/" + DateTime.UtcNow.AddDays(days).ToString("yyyy-MM-dd") + ".json");
                     lastScores = JsonConvert.DeserializeObject<List<GovDomain>>(lastBlob.DownloadText());
                     break;
                 }
@@ -73,7 +74,6 @@ namespace GovUk.SslScanner
                 {
                     // ignored
                 }
-            }
             return lastScores;
         }
     }
