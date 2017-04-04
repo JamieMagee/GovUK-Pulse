@@ -35,7 +35,7 @@ var libs = {
 gulp.task('html', function () {
   return gulp.src('*.html')
     .pipe(cdnizer([
-      'cdnjs:jquery@3.1.1',
+      'cdnjs:jquery@3.2.1',
       {
         cdn: 'cdnjs:twitter-bootstrap@3.3.7',
         package: 'bootstrap',
