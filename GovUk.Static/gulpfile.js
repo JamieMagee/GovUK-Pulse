@@ -41,7 +41,7 @@ gulp.task('html', function () {
         package: 'bootstrap',
         test: 'typeof $().emulateTransitionEnd == "function"'
       },
-      'cdnjs:d3@4.5.0',
+      'cdnjs:d3@4.8.0',
       {
         file: 'js/jquery.dataTables.min.js',
         test: 'typeof $().DataTable() == "object"',
