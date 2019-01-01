@@ -638,7 +638,7 @@ d3@5.7.0:
     d3-voronoi "1"
     d3-zoom "1"
 
-datatables.net-bs@>=1.10.9:
+datatables.net-bs@^1.10.15:
   version "1.10.19"
   resolved "https://registry.yarnpkg.com/datatables.net-bs/-/datatables.net-bs-1.10.19.tgz#08763b4e4d0cef1a427d019dc15e717c7ed67a4d"
   integrity sha512-5gxoI2n+duZP06+4xVC2TtH6zcY369/TRKTZ1DdSgDcDUl4OYQsrXCuaLJmbVzna/5Y5lrMmK7CxgvYgIynICA==
@@ -646,16 +646,16 @@ datatables.net-bs@>=1.10.9:
     datatables.net "1.10.19"
     jquery ">=1.7"
 
-datatables.net-responsive-bs@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/datatables.net-responsive-bs/-/datatables.net-responsive-bs-2.1.1.tgz#8770c0fad439a7839b1633cf454e01f227dde877"
-  integrity sha1-h3DA+tQ5p4ObFjPPRU4B8ifd6Hc=
+datatables.net-responsive-bs@2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/datatables.net-responsive-bs/-/datatables.net-responsive-bs-2.2.3.tgz#6d3791a77a18af746d4ad520b7e7319f731be43c"
+  integrity sha512-tQZiqqjXGlTiRBlBP3lON7ULThiMc0sLh4hT5xLaHRWBniaQkIMNhIzX9RRybWjOEQcHS7LA/ZiwE2S7rYqq9w==
   dependencies:
-    datatables.net-bs ">=1.10.9"
-    datatables.net-responsive ">=1.0.7"
+    datatables.net-bs "^1.10.15"
+    datatables.net-responsive "2.2.3"
     jquery ">=1.7"
 
-datatables.net-responsive@>=1.0.7:
+datatables.net-responsive@2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/datatables.net-responsive/-/datatables.net-responsive-2.2.3.tgz#50a2b1b4955b16b32f573a3f00f473b0bfbee913"
   integrity sha512-8D6VtZcyuH3FG0Hn5A4LPZQEOX3+HrRFM7HjpmsQc/nQDBbdeBLkJX4Sh/o1nzFTSneuT1Wh/lYZHVPpjcN+Sw==
