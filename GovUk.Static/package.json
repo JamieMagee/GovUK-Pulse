@@ -16,7 +16,7 @@
     "gulp-cdnizer": "^1.1.7",
     "gulp-clean-css": "^3.0.3",
     "gulp-concat": "^2.6.1",
-    "gulp-htmlmin": "^3.0.0",
+    "gulp-htmlmin": "^5.0.1",
     "gulp-jshint": "^2.0.4",
     "gulp-livereload": "^3.8.1",
     "gulp-notify": "^3.0.0",
