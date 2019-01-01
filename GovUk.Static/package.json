@@ -4,25 +4,25 @@
   "description": "Measuring HTTPS support on GOV.UK domains",
   "main": "gulpfile.js",
   "dependencies": {
-    "bootstrap": "^3.3.7",
-    "d3": "^4.8.0",
-    "datatables.net-responsive-bs": "^2.1.1",
-    "jquery": "^3.2.1"
+    "bootstrap": "3.3.7",
+    "d3": "4.8.0",
+    "datatables.net-responsive-bs": "2.1.1",
+    "jquery": "3.2.1"
   },
   "devDependencies": {
-    "del": "^2.2.2",
-    "gulp": "^3.9.1",
-    "gulp-cache": "^0.4.6",
-    "gulp-cdnizer": "^1.1.7",
-    "gulp-clean-css": "^3.0.3",
-    "gulp-concat": "^2.6.1",
-    "gulp-htmlmin": "^5.0.1",
-    "gulp-jshint": "^2.0.4",
-    "gulp-livereload": "^3.8.1",
-    "gulp-notify": "^3.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^3.0.1",
-    "jshint": "^2.9.4"
+    "del": "2.2.2",
+    "gulp": "3.9.1",
+    "gulp-cache": "0.4.6",
+    "gulp-cdnizer": "2.0.2",
+    "gulp-clean-css": "3.0.3",
+    "gulp-concat": "2.6.1",
+    "gulp-htmlmin": "5.0.1",
+    "gulp-jshint": "2.0.4",
+    "gulp-livereload": "3.8.1",
+    "gulp-notify": "3.0.0",
+    "gulp-rename": "1.2.2",
+    "gulp-uglify": "3.0.1",
+    "jshint": "2.9.4"
   },
   "repository": {
     "type": "git",
