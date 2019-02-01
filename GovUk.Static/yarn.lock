@@ -1169,10 +1169,10 @@ growly@^1.3.0:
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
   integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
 
-gulp-cache@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/gulp-cache/-/gulp-cache-1.1.0.tgz#b929ef1c2384c2dafdbd3d96d25ccdd1a2410e33"
-  integrity sha512-Ixq4cyNrUtFiflIxcQLM5wzlXdIXFEXl3Dc3ECLuZE1czqdd7W1+T8APD+kbJBcmj/IQAwoYF8mCiYYgypUE8A==
+gulp-cache@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/gulp-cache/-/gulp-cache-1.1.1.tgz#07c20471c05cceec46e77b7fb0633fb600206140"
+  integrity sha512-DiOlq861J8z1vzk69EpYo3+dvZ4KAa4qHd1E4isyHJoXri1+jd3XatoRytTCyOQWhuVdwaMqhPjsbEChZMgXwQ==
   dependencies:
     "@babel/runtime" "^7.2.0"
     cache-swap "^0.3.0"
