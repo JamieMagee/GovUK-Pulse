@@ -4,7 +4,7 @@
   "description": "Measuring HTTPS support on GOV.UK domains",
   "main": "gulpfile.js",
   "dependencies": {
-    "bootstrap": "3.4.0",
+    "bootstrap": "3.4.1",
     "d3": "5.8.0",
     "datatables.net-responsive-bs": "2.2.3",
     "jquery": "3.3.1"
