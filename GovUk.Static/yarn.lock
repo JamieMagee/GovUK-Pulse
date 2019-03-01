@@ -1640,10 +1640,10 @@ jquery@3.3.1, jquery@>=1.7:
   dependencies:
     semver "^5.3.0"
 
-jshint@2.9.7:
-  version "2.9.7"
-  resolved "https://registry.yarnpkg.com/jshint/-/jshint-2.9.7.tgz#038a3fa5c328fa3ab03ddfd85df88d3d87bedcbd"
-  integrity sha512-Q8XN38hGsVQhdlM+4gd1Xl7OB1VieSuCJf+fEJjpo59JH99bVJhXRXAh26qQ15wfdd1VPMuDWNeSWoNl53T4YA==
+jshint@2.10.1:
+  version "2.10.1"
+  resolved "https://registry.yarnpkg.com/jshint/-/jshint-2.10.1.tgz#06bd4cea090c424405aa0987de741341ff17f6bc"
+  integrity sha512-9GpPfKeffYBl7oBDX2lHPG16j0AM7D2bn3aLy9DaWTr6CWa0i/7UGhX8WLZ7V14QQnnr4hXbjauTLYg06F+HYw==
   dependencies:
     cli "~1.0.0"
     console-browserify "1.1.x"
