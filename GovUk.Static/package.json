@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "dependencies": {
     "bootstrap": "3.4.1",
-    "d3": "5.8.0",
+    "d3": "5.9.1",
     "datatables.net-responsive-bs": "2.2.3",
     "jquery": "3.3.1"
   },
